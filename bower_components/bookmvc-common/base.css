@@ -4,6 +4,27 @@ body {
 	padding: 0;
 }
 
+#wrapper {
+	position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 595px;
+  min-width: 1080px;
+  overflow: hidden;
+}
+
+.clearfix:after {
+	content: "."; /* Older browsers don't support empty content */
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
+}
+
 button {
 	margin: 0;
 	padding: 0;
@@ -24,7 +45,7 @@ body {
 	line-height: 1.4em;
 	background: #eaeaea url('bg.png');
 	color: #4d4d4d;
-	width: 550px;
+	/* width: 550px; */
 	margin: 0 auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
@@ -41,24 +62,47 @@ input[type="checkbox"] {
 #booksapp {
 	background: #fff;
 	background: rgba(255, 255, 255, 0.9);
-	margin: 130px 0 40px 0;
-	border: 1px solid #ccc;
-	position: relative;
-	border-top-left-radius: 2px;
-	border-top-right-radius: 2px;
-	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2),
-				0 25px 50px 0 rgba(0, 0, 0, 0.15);
+	/* margin: 130px 0 40px 0; */
+	/* border: 1px solid #ccc; */
+	/* position: relative; */
+	/* border-top-left-radius: 2px; */
+	/* border-top-right-radius: 2px; */
+	/* box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2),
+				0 25px 50px 0 rgba(0, 0, 0, 0.15); */
 }
 
-#booksapp:before {
-	content: '';
-	border-left: 1px solid #f5d6d6;
-	border-right: 1px solid #f5d6d6;
-	width: 2px;
-	position: absolute;
-	top: 0;
-	left: 40px;
-	height: 100%;
+#lookup-list {
+  min-height: 595px;
+  position: absolute;
+  top: 0;
+  bottom: 10%;
+  left: 0;
+  width: 33%;
+  /* z-index: 1000; */
+  overflow: scroll;
+}
+
+#results-list { 
+  background: rgba(18, 19, 20, 0.38);
+  position: absolute;
+  left: 33%;
+  right: 0;
+  top: 0;
+  bottom: 10%;
+  overflow: scroll;
+  -ms-transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+}
+
+#lookup-list, #results-list {
+    width: 49%;
+    float: left;
+    height: 100%;
+    overflow: scroll;
 }
 
 #booksapp input::-webkit-input-placeholder {
@@ -90,6 +134,7 @@ input[type="checkbox"] {
 #header {
 	padding-top: 15px;
 	border-radius: inherit;
+	position: relative;
 }
 
 #header:before {
@@ -136,14 +181,14 @@ input[type="checkbox"] {
 }
 
 #new-book {
-	padding: 16px 16px 16px 60px;
+	padding: 16px 16px 16px 22px;
 	border: none;
 	background: rgba(0, 0, 0, 0.02);
 	z-index: 2;
 	box-shadow: none;
 }
 
-#main {
+.main {
 	position: relative;
 	z-index: 2;
 	border-top: 1px dotted #adadad;
@@ -243,7 +288,7 @@ label[for='toggle-all'] {
 	white-space: pre;
 	word-break: break-word;
 	padding: 15px 60px 15px 15px;
-	margin-left: 45px;
+	margin-left: 5px;
 	display: block;
 	line-height: 1.2;
 	-webkit-transition: color 0.4s;
@@ -297,28 +342,14 @@ label[for='toggle-all'] {
 #footer {
 	color: #777;
 	padding: 0 15px;
-	position: absolute;
-	right: 0;
-	bottom: -31px;
-	left: 0;
+	/* position: absolute; */
+	/* right: 0; */
+	/* bottom: -31px; */
+	/* left: 0; */
 	height: 20px;
 	z-index: 1;
 	text-align: center;
-}
-
-#footer:before {
-	content: '';
-	position: absolute;
-	right: 0;
-	bottom: 31px;
-	left: 0;
-	height: 50px;
-	z-index: -1;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3),
-				0 6px 0 -3px rgba(255, 255, 255, 0.8),
-				0 7px 1px -3px rgba(0, 0, 0, 0.3),
-				0 43px 0 -6px rgba(255, 255, 255, 0.8),
-				0 44px 2px -6px rgba(0, 0, 0, 0.2);
+	/* overflow: auto; */
 }
 
 #book-count {
@@ -367,11 +398,14 @@ label[for='toggle-all'] {
 }
 
 #info {
-	margin: 65px auto 0;
+	/* margin: 65px auto 0; */
 	color: #a6a6a6;
 	font-size: 12px;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
 	text-align: center;
+	position: absolute;
+	top: 90%;
+	background-color: white;
 }
 
 #info a {
