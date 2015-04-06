@@ -18,6 +18,7 @@
                 <h1>books</h1>
                 <div id="lookup-list" class="clearfix">
                     <header id="header">
+
                         <input
                             id="new-book"
                             autofocus
@@ -26,7 +27,26 @@
                             v-model="newBook"
                             v-on="keyup:addBook | key enter"
                         >
+                        <!--
+                        <div id='fake_textarea' contenteditable>
+                            <div class="lookup-item placeholder">Paste in a list of books, one per line, here.</div>
+                            <ul id="">
+                                <li
+                                    class=""
+                                    v-repeat="books | filterBooks"
+                                    v-class="
+                                        editing   : this == editedBook
+                                    "
+                                >
+                                    <div class="">
+                                        <label v-text="title" v-on="dblclick: editBook(this)"></label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        -->
                     </header>
+
                     <section class="main" v-show="books.length" v-cloak>
                         <ul id="book-list">
                             <li
@@ -37,8 +57,7 @@
                                 "
                             >
                                 <div class="view">
-                                    <label v-text="title + ' ' + isbn" v-on="dblclick: editBook(this)"></label>
-                                    <button class="lookup" v-on="click: lookupBook(this)"></button>
+                                    <label v-text="title" v-on="dblclick: editBook(this)"></label>
                                 </div>
                                 <input
                                     class="edit"
@@ -54,6 +73,7 @@
                             </li>
                         </ul>
                     </section>
+
                     <footer id="footer" v-show="books.length" v-cloak>
                         <span id="book-count">
                             <strong v-text="remaining"></strong> {{remaining | pluralize item}} left
@@ -77,8 +97,10 @@
                                 "
                             >
                                 <div class="view">
-                                    <img src="{{imageLink}}"/>
-                                    <span v-text="title + ' ' + isbn"></span>
+                                    <img src="{{imageLink}}"></img>
+                                    <p class="title">{{title}}</p>
+                                    <p class="author">{{author}}</p>
+                                    <p class="isbn">{{isbn}}</p>
                                 </div>
                             </li>
                         </ul>

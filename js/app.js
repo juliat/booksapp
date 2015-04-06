@@ -4,6 +4,11 @@
 
     'use strict';
 
+    Vue.filter('splitlines', function (value) {
+      var linesList = value.split('\n');
+      return linesList;
+    });
+
     exports.app = new Vue({
 
         // the root element that will be compiled
@@ -84,7 +89,7 @@
                 if (!value) {
                     return;
                 }
-                this.books.push({ title: value, isbn: '', imageLink: '' });
+                this.books.push({ title: value, author: '', isbn: '', imageLink: '' });
                 this.newBook = '';
             },
 
@@ -106,7 +111,8 @@
                 request.then(function(response) {
                     /* if the request is successful, assign the first returned item's isbn
                     to be this book object's isbn */
-                    book.isbn = response.result.items[0].volumeInfo.industryIdentifiers[0].identifier
+                    book.isbn = response.result.items[0].volumeInfo.industryIdentifiers[0].identifier;
+                    book.author = response.result.items[0].volumeInfo.authors[0];
                     book.imageLink = response.result.items[0].volumeInfo.imageLinks.smallThumbnail;
                 }, function(reason) {
                   console.log('Error: ' + reason.result.error.message);
